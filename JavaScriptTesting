@@ -9,12 +9,12 @@ var By = WebDriver.By;
 var until = WebDriver.until;
 var expect = require('chai').expect;
 
+
 describe('asynchrony.com', function() {
 
   before(function(done) {
     this.timeout(30000);
-    driver.get('http://www.asynchrony.com').then(function() {
-      done();
+    driver.get('http://www.asynchrony.com').then(done)() {
     });
   });
 
@@ -32,3 +32,10 @@ describe('asynchrony.com', function() {
       driver.findElement(By.CssSelector('ul#primary-menu')).then(done);
     });
     });
+
+
+  after(function(done) {
+  driver.quit();
+  (done());
+});
+});
