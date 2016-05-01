@@ -2,7 +2,7 @@
 
 var WebDriver = require('selenium-webdriver');
 var driver = new WebDriver.Builder().withCapabilities(
-    WebDriver.Capabilities.chrome()
+    WebDriver.Capabilities.firefox()
 ).build();
 
 var By = WebDriver.By;
