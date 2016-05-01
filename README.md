@@ -14,5 +14,5 @@
 
   Run the following to start the test
   ```
-  ./node_modules/mocha/bin/mocha JavascriptTesting
+  npm start
   ```
