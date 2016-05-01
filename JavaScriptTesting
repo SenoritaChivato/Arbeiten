@@ -14,8 +14,7 @@ describe('asynchrony.com', function() {
 
   before(function(done) {
     this.timeout(30000);
-    driver.get('http://www.asynchrony.com').then(done)() {
-    });
+    driver.get('http://www.asynchrony.com').then(done());
   });
 
   describe('Check homepage', function() {
