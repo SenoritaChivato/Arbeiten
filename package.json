@@ -6,6 +6,6 @@
   },
   "scripts": {
     "prestart": "npm install && webdriver-manager update",
-    "start": "./node_modules/mocha/bin/mocha JavaScriptTesting.js"
+    "start": "./node_modules/mocha/bin/mocha -t 50000 JavaScriptTesting.js"
   }
 }

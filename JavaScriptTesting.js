@@ -1,40 +1,36 @@
 'use strict';
 
-var WebDriver = require('selenium-webdriver');
-var driver = new WebDriver.Builder().withCapabilities(
-    WebDriver.Capabilities.firefox()
+var webdriver = require('selenium-webdriver');
+var driver = new webdriver.Builder().withCapabilities(
+    webdriver.Capabilities.firefox()
 ).build();
 
-var By = WebDriver.By;
-var until = WebDriver.until;
+var By = webdriver.By;
+var until = webdriver.until;
 var expect = require('chai').expect;
 
 
 describe('asynchrony.com', function() {
 
-  before(function(done) {
-    this.timeout(30000);
-    driver.get('http://www.asynchrony.com').then(done());
-  });
-
   describe('Check homepage', function() {
-    it('should see the correct title', function(done) {
-      driver.getTitle().then(function(title) {
-        expect(title).to.have.string('Asynchrony Labs');
-        done();
+    beforeEach(function() {
+      driver.get('http://www.asynchrony.com');
+    });
+
+    it('should see the correct title', function() {
+      return driver.getTitle().then(function(title) {
+        return expect(title).to.have.string('Asynchrony Labs');
+      });
+    });
+
+    it('should see the correct menu links', function() {
+      return driver.findElements(webdriver.By.css('ul#primary-menu > li')).then(function(elements) {
+        console.log('Found', elements.length, 'links on the primary menu.' )
       });
     });
   });
 
-  describe('Check homepage', function() {
-    it('should see the correct menu links', function(done) {
-      driver.findElement(By.CssSelector('ul#primary-menu')).then(done);
-    });
-    });
-
-
-  after(function(done) {
-  driver.quit();
-  (done());
-});
+  after(function() {
+    driver.quit();
+  });
 });
